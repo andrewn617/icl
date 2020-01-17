@@ -2,8 +2,8 @@ require_relative '../lib/icl.rb'
 require "minitest/autorun"
 
 class IclTest < Minitest::Test
-  def test_transform_an_event_using_one_transform
-    event = <<~XML
+  def test_transform_an_xml_using_one_stylesheet
+    xml = <<~XML
       <?xml version="1.0"?>
       <name>
         <title>Dr.</title>
@@ -12,7 +12,7 @@ class IclTest < Minitest::Test
       </name>
     XML
 
-    transform = <<~XSLT
+    stylesheet = <<~XSLT
       <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
         <xsl:template match="name">
@@ -25,7 +25,7 @@ class IclTest < Minitest::Test
       </xsl:stylesheet>
     XSLT
 
-    document = <<~XML
+    output = <<~XML
       <?xml version="1.0"?>
       <name>
         <title>Dr.</title>
@@ -33,11 +33,11 @@ class IclTest < Minitest::Test
       </name>
     XML
 
-    assert_equal document, Icl.transform_from_strings(event, transform).to_s
+    assert_equal output, Icl.transform_from_strings(xml, stylesheet).to_s
   end
 
-  def test_transform_an_event_using_multiple_transforms
-    event = <<~XML
+  def test_transform_an_xml_using_multiple_transforms
+    xml = <<~XML
       <?xml version="1.0"?>
       <name>
         <title>Dr.</title>
@@ -46,7 +46,7 @@ class IclTest < Minitest::Test
       </name>
     XML
 
-    transform_1 = <<~XSLT
+    stylesheet_1 = <<~XSLT
       <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
         <xsl:template match="name">
@@ -60,7 +60,7 @@ class IclTest < Minitest::Test
     XSLT
 
 
-    transform_2 = <<~XSLT
+    stylesheet_2 = <<~XSLT
       <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
         <xsl:template match="name">
@@ -70,11 +70,11 @@ class IclTest < Minitest::Test
       </xsl:stylesheet>
     XSLT
 
-    document = <<~XML
+    output = <<~XML
       <?xml version="1.0"?>
       <name>Dr. John Smith</name>
     XML
 
-    assert_equal document, Icl.transform_from_strings(event, transform_1, transform_2).to_s
+    assert_equal output, Icl.transform_from_strings(xml, stylesheet_1, stylesheet_2).to_s
   end
 end
