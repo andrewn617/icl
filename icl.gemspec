@@ -16,6 +16,7 @@ spec = Gem::Specification.new do |s|
   s.bindir = 'bin'
   s.executables << 'icl'
   s.add_development_dependency('rake')
+  s.add_development_dependency('minitest')
   s.add_runtime_dependency('gli','2.19.0')
   s.add_runtime_dependency('nokogiri')
 end

@@ -12,16 +12,22 @@ require 'nokogiri'
 # => support multiple events per doc type
 
 module Icl
-  def self.generate(event, *transforms)
-    event = File.open("#{event}") { |f| Nokogiri::XML(f) }
+  def self.generate_from_files(event_file, *transform_files)
+    event_string = File.open("#{event}")
+    transform_strings = transform_files.map { |transform_file| File.open("#{transform}") }
 
+    puts generate_from_strings(event_string, *transform_strings)
+  end
+
+  def self.generate_from_strings(event_string, *transform_strings)
+    event = Nokogiri::XML(event_string)
     output = event
 
-    transforms.each do |transform|
-      transform = File.open("#{transform}") { |f| Nokogiri::XSLT(f) }
+    transform_strings.each do |transform_string|
+      transform = Nokogiri::XSLT(transform_string)
       output = transform.transform(output)
     end
 
-    puts output
+    output
   end
 end
