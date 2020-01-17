@@ -3,6 +3,8 @@ require 'nokogiri'
 
 # to do
 # => add tests
+# => code smells?
+# => how do i get faster feedback without publish gem
 # => make the path less specific
 # => command to set up a project
 # => command to set up a document type
