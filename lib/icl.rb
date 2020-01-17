@@ -12,9 +12,9 @@ require 'nokogiri'
 # => support multiple events per doc type
 
 module Icl
-  def self.generate(document_type)
-    event = File.open("document_types/#{document_type}/event.xml") { |f| Nokogiri::XML(f) }
-    transform = File.open("document_types/#{document_type}/transform.xml") { |f| Nokogiri::XSLT(f) }
+  def self.generate(event, transform)
+    event = File.open("#{event}") { |f| Nokogiri::XML(f) }
+    transform = File.open("#{transform}") { |f| Nokogiri::XSLT(f) }
 
     puts transform.transform(event)
   end
