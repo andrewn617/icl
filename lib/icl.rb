@@ -13,8 +13,8 @@ require 'nokogiri'
 
 module Icl
   def self.generate(event_file, *transform_files)
-    event_string = File.open("#{event}")
-    transform_strings = transform_files.map { |transform_file| File.open("#{transform}") }
+    event_string = File.open("#{event_file}")
+    transform_strings = transform_files.map { |transform_file| File.open("#{transform_file}") }
 
     puts generate_from_strings(event_string, *transform_strings)
   end
