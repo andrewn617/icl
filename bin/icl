@@ -31,7 +31,7 @@ class App
   arg_name 'Name of the document type'
   command :generate do |c|
     c.action do |global_options,options,args|
-      Icl.generate(args.first)
+      Icl.generate(*args)
     end
   end
 
