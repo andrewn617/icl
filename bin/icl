@@ -20,11 +20,11 @@ class App
   arg_name 'The name of the argument'
   flag [:f,:flagname]
 
-  desc 'Transforms the event using the transform'
+  desc 'Transforms an XML document using one or more XSLT stylesheets'
   arg_name 'Name of the document type'
-  command :generate do |c|
+  command :transform do |c|
     c.action do |global_options,options,args|
-      Icl.generate(*args)
+      Icl.transform(*args)
     end
   end
 

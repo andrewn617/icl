@@ -33,7 +33,7 @@ class IclTest < Minitest::Test
       </name>
     XML
 
-    assert_equal document, Icl.generate_from_strings(event, transform).to_s
+    assert_equal document, Icl.transform_from_strings(event, transform).to_s
   end
 
   def test_transform_an_event_using_multiple_transforms
@@ -75,6 +75,6 @@ class IclTest < Minitest::Test
       <name>Dr. John Smith</name>
     XML
 
-    assert_equal document, Icl.generate_from_strings(event, transform_1, transform_2).to_s
+    assert_equal document, Icl.transform_from_strings(event, transform_1, transform_2).to_s
   end
 end
