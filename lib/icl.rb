@@ -12,7 +12,7 @@ require 'nokogiri'
 # => support multiple events per doc type
 
 module Icl
-  def self.generate_from_files(event_file, *transform_files)
+  def self.generate(event_file, *transform_files)
     event_string = File.open("#{event}")
     transform_strings = transform_files.map { |transform_file| File.open("#{transform}") }
 
