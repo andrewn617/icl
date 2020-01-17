@@ -1,6 +1,3 @@
-= icl
+This is a command line app for transforming XML documents with XSLT stylesheets.
 
-Describe your project here
-
-:include:icl.rdoc
 
