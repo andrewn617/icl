@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    icl (0.0.1)
+    icl (1.0.0)
       gli (= 2.19.0)
       nokogiri
 
