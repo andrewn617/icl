@@ -1,5 +1,0 @@
-= icl
-
-Generate this with
-    icl _doc
-After you have described your command line interface
