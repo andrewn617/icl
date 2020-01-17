@@ -37,7 +37,7 @@ class App
 
   command :test do |c|
     c.action do |global_options,options,args|
-      "this is a test"
+      p "this is a test"
     end
   end
 
